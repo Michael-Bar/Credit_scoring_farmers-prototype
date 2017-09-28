@@ -38,11 +38,15 @@ However, given the importance of preventing default and subsequent black-listing
 
 Finally, the training process generates informative plots such as the variable importance plot:
 
-![Variable_importance](https://user-images.githubusercontent.com/26271235/30958761-c4be8726-a446-11e7-8d53-d28c0fe3eef8.png)
+
+<img src="https://user-images.githubusercontent.com/26271235/30958761-c4be8726-a446-11e7-8d53-d28c0fe3eef8.png" width="400" height="500">
+
 
 And some partial-dependency plots:
 
-![PDPs](https://user-images.githubusercontent.com/26271235/30958759-c4bab754-a446-11e7-9ce1-4f90c628cd2e.png)
+
+<img src="https://user-images.githubusercontent.com/26271235/30958759-c4bab754-a446-11e7-9ce1-4f90c628cd2e.png" width="500" height="300">
+
 
 The last part of the process involves applying the model to cleaned data from the current year. These predictions are then shared with loan officers and call centre staff for follow up
 
