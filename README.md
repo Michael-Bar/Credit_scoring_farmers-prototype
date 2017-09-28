@@ -22,7 +22,7 @@ Data are first cleaned and then summarized at the group level, this is also wher
 
 ### Model building
 
-With clean data we can start model building and testing. First there are options for recursive-feature extraction and model stability checks (which increase runtime). Once these checks are complete a small RF is grown and nodesize and mtry optimized for minimal OOB error:
+With clean data we can start model building and testing. First there are options for recursive-feature extraction and model stability checks (which increase runtime). Once these checks are complete a small RF is grown and nodesize and mtry optimized for minimal OOB error (a mixed gradient descent and grid-search approach):
 
 ![Model tuning](https://user-images.githubusercontent.com/26271235/30958758-c4ba3dc4-a446-11e7-9f43-abdd30a22384.png)
 
