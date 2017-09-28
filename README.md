@@ -16,7 +16,9 @@ The model can be broken down into 3 (automated) stages, data cleaning, model bui
 
 Data are first cleaned and then summarized at the group level, this is also where new features are constructed (e.g. looking at group cohesion through spreads on repayment dates and amounts). At this point we check for multi-collinearity amongst our variables and drop any variables with high correlation: 
 
-![Correlation matrix](https://user-images.githubusercontent.com/26271235/30958765-c4f5d406-a446-11e7-81b2-8920fd09c655.png)
+
+<img src="https://user-images.githubusercontent.com/26271235/30958765-c4f5d406-a446-11e7-81b2-8920fd09c655.png" width="400" height="400">
+
 
 ### Model building
 
