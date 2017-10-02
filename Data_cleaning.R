@@ -1,5 +1,5 @@
-###Machine learning program to look at group level repayment prediction in Rwanda 2016
-#script 1 data clean and feature building
+# Machine learning program to look at group level repayment prediction in Rwanda 2016
+# script 1 data clean and feature building
  
 ## load libraries
 # dplyr and tibble are for working with tables
@@ -33,12 +33,12 @@ library(readr, quietly = T) #faster FI
 # define function that turns decimal percentages into pretty formats
 format_pct <- function(num) {round(num*100, digits = 2)}
 
-#calc SEM of list
+# calc SEM of list
 sems <- function(x) {sqrt(var(x)/length(x)) }
 
 
-#calc non-parametric power using Monte Carlo methods
-#Below based on code from Dr. Loladze http://elifesciences.org/content/3/e02245 
+# calc non-parametric power using Monte Carlo methods
+# Below based on code from Dr. Loladze http://elifesciences.org/content/3/e02245 
 power <- function(sample1, sample2, reps=500, size=10) {
   results  = sapply(1:reps, function(r) {
     resample1 = sample(sample1, size=size, replace=TRUE) 
@@ -49,120 +49,19 @@ power <- function(sample1, sample2, reps=500, size=10) {
   sum(results<0.05)/reps
 }
 
-#for manually setting width of troublesome kable tables
+# for manually setting width of troublesome kable tables
 html_table_width <- function(kable_output, width){
   width_html = paste0(paste0('<col width="', width, '">'), collapse = "\n")
   sub("<table>", paste0("<table>\n", width_html), kable_output) }
 
 
-#will return unique val or NA, useful in summarising data
+# will return unique val or NA, useful in summarising data
 uniqueorna <- function(x) {
   if (length(unique(x)) == 1) {
     unique(x)[1]
   } else {
     NA
   }
-}
-
-
-#calc Cohen's D
-cohen_d <- function(m1,m2,s1,s2){  
-  spo = sqrt((s1**2 + s2**2)/2)
-  d = (m1 - m2)/spo
-  effsi = d / sqrt((d**2)+4)
-  ret = list("d" = d, "effectsi" = effsi)
-  return(ret) }
-
-#given two list, find members NOT in BOTH  
-excluded <- function(l1,l2){
-  exc = c()
-  exc = setdiff(l1,l2)
-  exc = c(exc, setdiff(l2,l1))
-  exc = unique(exc)
-  return(exc)
-}
-
-
-
-summ.lm <- function (x, digits = max(3L, getOption("digits") - 3L), symbolic.cor = x$symbolic.cor, 
-                     signif.stars = getOption("show.signif.stars"), ...) 
-{
-  cat("\nCall:\n", paste(deparse(x$call), sep = "\n", collapse = "\n"), 
-      "\n\n", sep = "")
-  resid = x$residuals
-  df = x$df
-  rdf = df[2L]
-  cat(if (!is.null(x$weights) && diff(range(x$weights))) 
-    "Weighted ", "Residuals:\n", sep = "")
-  if (rdf > 5L) {
-    nam = c("Min", "1Q", "Median", "3Q", "Max")
-    rq = if (length(dim(resid)) == 2L) 
-      structure(apply(t(resid), 1L, quantile), dimnames = list(nam, 
-                                                               dimnames(resid)[[2L]]))
-    else {
-      zz = zapsmall(quantile(resid), digits + 1L)
-      structure(zz, names = nam)
-    }
-    print(rq, digits = digits, ...)
-  }
-  else if (rdf > 0L) {
-    print(resid, digits = digits, ...)
-  }
-  else {
-    cat("ALL", df[1L], "residuals are 0: no residual degrees of freedom!")
-    cat("\n")
-  }
-  if (length(x$aliased) == 0L) {
-    cat("\nNo Coefficients\n")
-  }
-  else {
-    if (nsingular <- df[3L] - df[1L]) 
-      cat("\nCoefficients: (", nsingular, " not defined because of singularities)\n", 
-          sep = "")
-    else cat("\nCoefficients:\n")
-    coefs = x$coefficients
-    if (!is.null(aliased = x$aliased) && any(aliased)) {
-      cn = names(aliased)
-      coefs = matrix(NA, length(aliased), 4, dimnames = list(cn, 
-                                                              colnames(coefs)))
-      coefs[!aliased, ] = x$coefficients
-    }
-    printCoefmat(coefs, digits = digits, signif.stars = signif.stars, 
-                 na.print = "NA", ...)
-  }
-  cat("\nResidual standard error:", format(signif(x$sigma, 
-                                                  digits)), "on", rdf, "degrees of freedom")
-  cat("\n")
-  if (nzchar(mess = naprint(x$na.action))) 
-    cat("  (", mess, ")\n", sep = "")
-  if (!is.null(x$fstatistic)) {
-    cat("Multiple R-squared: ", formatC(x$r.squared, digits = digits))
-    cat(",\tAdjusted R-squared: ", formatC(x$adj.r.squared, 
-                                           digits = digits), "\nF-statistic:", formatC(x$fstatistic[1L], 
-                                                                                       digits = digits), "on", x$fstatistic[2L], "and", 
-        x$fstatistic[3L], "DF,  p-value:", format.pval(pf(x$fstatistic[1L], 
-                                                          x$fstatistic[2L], x$fstatistic[3L], lower.tail = FALSE), 
-                                                       digits = digits))
-    cat("\n")
-  }
-  correl = x$correlation
-  if (!is.null(correl)) {
-    p = NCOL(correl)
-    if (p > 1L) {
-      cat("\nCorrelation of Coefficients:\n")
-      if (is.logical(symbolic.cor) && symbolic.cor) {
-        print(symnum(correl, abbr.colnames = NULL))
-      }
-      else {
-        correl = format(round(correl, 2), nsmall = 2, 
-                         digits = digits)
-        correl[!lower.tri(correl)] = ""
-        print(correl[-1, -p, drop = FALSE], quote = FALSE)
-      }
-    }
-  }
-  cat("\n")
-  invisible(x)
 }
 
 
@@ -339,9 +238,9 @@ axxxx = Sys.time()
 
 
 
-#year_in = 2015
+# year_in = 2015
 if(1==0){
-  #dev mode
+  # dev mode
   scin = "C:/Users/Michael/OneDrive/OAF/MB/Projects/Roster_data/Rwanda/SC/2014/Season Clients Detailed_20170522-102845.csv"
   vrin = "C:/Users/Michael/OneDrive/OAF/MB/Projects/Roster_data/Rwanda/VR/2014/Detailed_20170522-102805.csv"
   path_out = merged_path
@@ -365,7 +264,7 @@ if(devmode==1){
   Sys.sleep(5)
 }
 
-#check args
+# check args
 print("Check args...")
 print(scin)
 print(vrin)
