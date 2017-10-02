@@ -3,14 +3,10 @@
 # Modified: 2017-10-02
 # Packages Used: plyr, dplyr, ggplot2,sp,cowplot,car,forcats,readr,caret
 # Description: Script 1 of 3: cleaning farmer data for default predictions
-
 # Master function to process data
-
 processdata <- function(scin, vrin, path_outy, plotout =FALSE , fakedate=Sys.Date(), devmode=0){
 pb = txtProgressBar(min = 0, max = 10, style = 3)
 setTxtProgressBar(pb, 1) 
-axxxx = Sys.time()
-  
 # year_in = 2015
 if(1==0){
   # dev mode args
