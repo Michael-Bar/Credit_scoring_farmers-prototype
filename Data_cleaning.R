@@ -2,20 +2,8 @@
 # Date: 2017-07-01
 # Modified: 2017-10-02
 # Description: Script 1 of 3: cleaning farmer data for default predictions
-# Packages Used: "plyr", "dplyr", "ggplot2","sp","cowplot","car","forcats","readr","caret"
-
-require(plyr, quietly = T)  #data manipulation
-require(dplyr, quietly = T, warn.conflicts = F, verbose = F)
-require(sp, quietly = T)
-require(ggplot2, quietly = T)
-require(cowplot)
-require(car)
-require(forcats, quietly = T) #data manipulation
-require(readr, quietly = T) #faster FI
-
-
-
-
+# Packages Used: plyr, dplyr, ggplot2,sp,cowplot,car,forcats,readr,caret
+# All rights reserved.
 
 #### define helpful functions
 # will return unique val or NA, useful in summarising data
@@ -201,6 +189,17 @@ if(devmode==1){
   print("    DEVELOPER mode is ON. WARNING - this will not produce an accurate model, please set devmode=0")
   Sys.sleep(5)
 }
+  
+  
+# load libs
+require(plyr, quietly = T)  #data manipulation
+require(dplyr, quietly = T, warn.conflicts = F, verbose = F)
+require(sp, quietly = T)
+require(ggplot2, quietly = T)
+require(cowplot)
+require(car)
+require(forcats, quietly = T) #data manipulation
+require(readr, quietly = T) #faster FI
 
 # check args
 print("Check args...")
