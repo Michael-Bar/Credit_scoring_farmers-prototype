@@ -3,9 +3,6 @@
 # Modified: 2017-10-02
 # Description: Script 1 of 3: cleaning farmer data for default predictions
 # Packages Used: "plyr", "dplyr", "ggplot2","sp","cowplot","car","forcats","readr","caret"
-list.of.packages <- c("plyr", "dplyr", "ggplot2","sp","cowplot","car","forcats","readr","caret")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
 
 require(plyr, quietly = T)  #data manipulation
 require(dplyr, quietly = T, warn.conflicts = F, verbose = F)
