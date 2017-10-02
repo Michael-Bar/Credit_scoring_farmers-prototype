@@ -8,47 +8,20 @@ list.of.packages <- c("plyr", "dplyr", "ggplot2","sp","cowplot","car","forcats",
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
 
-
-
-library(plyr, quietly = T)  #data manipulation
-library(dplyr, quietly = T, warn.conflicts = F, verbose = F)
-library(sp, quietly = T)
-library(ggplot2, quietly = T)
-library(cowplot)
-library(car)
-library(forcats, quietly = T) #data manipulation
-library(readr, quietly = T) #faster FI
+require(plyr, quietly = T)  #data manipulation
+require(dplyr, quietly = T, warn.conflicts = F, verbose = F)
+require(sp, quietly = T)
+require(ggplot2, quietly = T)
+require(cowplot)
+require(car)
+require(forcats, quietly = T) #data manipulation
+require(readr, quietly = T) #faster FI
 
 
 
 
 
 #### define helpful functions
-# define function that turns decimal percentages into pretty formats
-format_pct <- function(num) {round(num*100, digits = 2)}
-
-# calc SEM of list
-sems <- function(x) {sqrt(var(x)/length(x)) }
-
-
-# calc non-parametric power using Monte Carlo methods
-# Below based on code from Dr. Loladze http://elifesciences.org/content/3/e02245 
-power <- function(sample1, sample2, reps=500, size=10) {
-  results  = sapply(1:reps, function(r) {
-    resample1 = sample(sample1, size=size, replace=TRUE) 
-    resample2 = sample(sample2, size=size, replace=TRUE) 
-    test = wilcox.test(resample1, resample2, paired=FALSE, correct=TRUE, exact=FALSE)
-    test$p.value
-  })
-  sum(results<0.05)/reps
-}
-
-# for manually setting width of troublesome kable tables
-html_table_width <- function(kable_output, width){
-  width_html = paste0(paste0('<col width="', width, '">'), collapse = "\n")
-  sub("<table>", paste0("<table>\n", width_html), kable_output) }
-
-
 # will return unique val or NA, useful in summarising data
 uniqueorna <- function(x) {
   if (length(unique(x)) == 1) {
@@ -150,13 +123,6 @@ redo_types <- function(dataframess){
   numnames = c(which(lapply(dataframess, class) =="numeric"), which(lapply(dataframess, class) =="integer")) 
   datenames = c(which(lapply(dataframess, class) =="Date"), which(lapply(dataframess, class) =="difftime")) 
   charnames = c(which(lapply(dataframess, class) =="character"), which(lapply(dataframess, class) =="factor")) 
-
-  
-  #numnames = colnames( dataframess[,numnames])
-  #datenames = colnames(dataframess[,datenames])
-  #charnames = colnames(dataframess[,charnames])
-  #intnames = colnames(dataframess[,intnames])
-  #dataframess[intnames] = sapply(dataframess[intnames],as.numeric)
   
   #recode data for RF
   for(i in numnames){
@@ -229,32 +195,14 @@ process_data <- function(scin, vrin, path_outy, plot_out =FALSE , fakedate=Sys.D
 pb = txtProgressBar(min = 0, max = 10, style = 3)
 setTxtProgressBar(pb, 1) 
 axxxx = Sys.time()
-
-
-
+  
 # year_in = 2015
 if(1==0){
-  # dev mode
-  scin = "C:/Users/Michael/OneDrive/OAF/MB/Projects/Roster_data/Rwanda/SC/2014/Season Clients Detailed_20170522-102845.csv"
-  vrin = "C:/Users/Michael/OneDrive/OAF/MB/Projects/Roster_data/Rwanda/VR/2014/Detailed_20170522-102805.csv"
-  path_out = merged_path
-  scin = sciny16
-  vrin = vriny16
-  path_outy = merged_path
-  fakedate=Sys.Date()
-  plot_out=FALSE
-  devmode=0
-  
-  rm(devmode)
-  rm(path_out)
-  rm(scin)
-  rm(vrin)
-  rm(fakedate)
-  
+  # dev mode args
 }
 
 if(devmode==1){
-  print("    DEVELOPER mode is ON. WARNING - this will not produce an accurate model, please make devmode=0")
+  print("    DEVELOPER mode is ON. WARNING - this will not produce an accurate model, please set devmode=0")
   Sys.sleep(5)
 }
 
