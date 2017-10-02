@@ -1,14 +1,8 @@
-# Machine learning program to look at group level repayment prediction in Rwanda 2016
-# script 1 data clean and feature building
- 
-## load libraries
-# dplyr and tibble are for working with tables
-# reshape is for easy table transformation
-# knitr is to make pretty tables at the end
-# ggplot2 is for making graphs
-# readxl is for reading in Excel files
-
-
+# Author: Mike Barber
+# Date: 2017-07-01
+# Modified: 2017-10-02
+# Description: Script 1 of 3: cleaning farmer data for default predictions
+# Packages Used: "plyr", "dplyr", "ggplot2","sp","cowplot","car","forcats","readr","caret"
 
 list.of.packages <- c("plyr", "dplyr", "ggplot2","sp","cowplot","car","forcats","readr","caret")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
