@@ -1,13 +1,14 @@
+# Author: Michael Barber
+# Date: 2017-06-01
+# Modified: 2017-10-02
+# Description: Trains and tunes a randomforest on loan default data
+# Packages Used: "plyr", "dplyr","mice",  "reshape","caTools","ROCR","corrplot","car", "plotly","randomForest", "ggplot2","sp","cowplot","car","forcats","readr
+# Blog Reference: Not published
 
-#ML on Rwanda data
-#script 2
+#script 2 of 3
+
 options(stringsAsFactors = FALSE)
-## load libraries
-# dplyr and tfibble are for working with tables
-# reshape is for easy table transformation
-# knitr is to make pretty tables at the end
-# ggplot2 is for making graphs
-# readxl is for reading in Excel files
+
 
 list.of.packages <- c("plyr", "dplyr", "reshape","caTools","ROCR","corrplot","car", "plotly","randomForest", "ggplot2","sp","cowplot","car","forcats","readr","caret")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]

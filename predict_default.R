@@ -1,7 +1,9 @@
-#script to predict new default probs based on 2016 and 2015 data
-#needs merged 2017 data (from function "process_data" in data_funcs.R)
-#needs merged 2016 data (for looking at new district names)
-#needs RF object, default name is SUPERFOREST.Rdata
+# Author: Michael Barber
+# Date: 2017-06-01
+# Modified: 2017-10-02
+# Description: These functions will take the model produced in step 2, and the clean data produced in step 1 to produce new predicions
+# Packages Used: "plyr", "dplyr","mice",  "reshape","caTools","ROCR","corrplot","car", "plotly","randomForest", "ggplot2","sp","cowplot","car","forcats","readr
+# Blog Reference: Not published
 
 #script 3 of 3
 options(stringsAsFactors = FALSE)

@@ -1,4 +1,10 @@
-#Master script to call other scripts
+# Author: Michael Barber
+# Date: 2017-06-01
+# Modified: 2017-10-02
+# Description: Master Script to call other scripts locally
+# Packages Used: "plyr", "dplyr","mice",  "reshape","caTools","ROCR","corrplot","car", "plotly","randomForest", "ggplot2","sp","cowplot","car","forcats","readr
+# Blog Reference: Not published
+
 
 list.of.packages <- c("rstudioapi","tcltk")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
