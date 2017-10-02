@@ -1,14 +1,12 @@
 # Author: Mike Barber
 # Date: 2017-07-01
 # Modified: 2017-10-02
-# Description: Script 1 of 3: cleaning farmer data for default predictions
 # Packages Used: plyr, dplyr, ggplot2,sp,cowplot,car,forcats,readr,caret
-# All rights reserved.
-
+# Description: Script 1 of 3: cleaning farmer data for default predictions
 
 # Master function to process data
 
-process_data <- function(scin, vrin, path_outy, plot_out =FALSE , fakedate=Sys.Date(), devmode=0){
+processdata <- function(scin, vrin, path_outy, plotout =FALSE , fakedate=Sys.Date(), devmode=0){
 pb = txtProgressBar(min = 0, max = 10, style = 3)
 setTxtProgressBar(pb, 1) 
 axxxx = Sys.time()
