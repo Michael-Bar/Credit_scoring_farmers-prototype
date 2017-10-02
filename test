@@ -1,9 +1,3 @@
- 
 # Blog Reference: Not published
-
-
-
-bingSearchXScraper <- function(input2) {
-
+testfunc <- function(input2) {
 }
-
