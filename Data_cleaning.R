@@ -5,6 +5,36 @@
 # Packages Used: plyr, dplyr, ggplot2,sp,cowplot,car,forcats,readr,caret
 # All rights reserved.
 
+
+# Master function to process data
+
+process_data <- function(scin, vrin, path_outy, plot_out =FALSE , fakedate=Sys.Date(), devmode=0){
+pb = txtProgressBar(min = 0, max = 10, style = 3)
+setTxtProgressBar(pb, 1) 
+axxxx = Sys.time()
+  
+# year_in = 2015
+if(1==0){
+  # dev mode args
+}
+
+if(devmode==1){
+  print("    DEVELOPER mode is ON. WARNING - this will not produce an accurate model, please set devmode=0")
+  Sys.sleep(5)
+}
+  
+  
+# load libs
+require(plyr, quietly = T)  #data manipulation
+require(dplyr, quietly = T, warn.conflicts = F, verbose = F)
+require(sp, quietly = T)
+require(ggplot2, quietly = T)
+require(cowplot)
+require(car)
+require(forcats, quietly = T) #data manipulation
+require(readr, quietly = T) #faster FI
+
+### Funcs ----
 #### define helpful functions
 # will return unique val or NA, useful in summarising data
 uniqueorna <- function(x) {
@@ -173,40 +203,7 @@ clear_NA <- function(d, threshhold){
     }   }
   return(d) }
 
-#SUPER function to process data
-
-process_data <- function(scin, vrin, path_outy, plot_out =FALSE , fakedate=Sys.Date(), devmode=0){
-pb = txtProgressBar(min = 0, max = 10, style = 3)
-setTxtProgressBar(pb, 1) 
-axxxx = Sys.time()
   
-# year_in = 2015
-if(1==0){
-  # dev mode args
-}
-
-if(devmode==1){
-  print("    DEVELOPER mode is ON. WARNING - this will not produce an accurate model, please set devmode=0")
-  Sys.sleep(5)
-}
-  
-  
-# load libs
-require(plyr, quietly = T)  #data manipulation
-require(dplyr, quietly = T, warn.conflicts = F, verbose = F)
-require(sp, quietly = T)
-require(ggplot2, quietly = T)
-require(cowplot)
-require(car)
-require(forcats, quietly = T) #data manipulation
-require(readr, quietly = T) #faster FI
-
-# check args
-print("Check args...")
-print(scin)
-print(vrin)
-print(path_outy)
-print(fakedate)
 #####Read in data
 #read in few lines for good titles and classes
 
