@@ -842,36 +842,6 @@ train$year = NULL
 #COULD DO FEAT EXT HERE TO SPEED UP RF?
 ## passing for now as it's now slow and I want to leave in some redundancy in the model
 
-#try out some things
-if(1==0){
-  train$best_date = NULL
-  train$worst_date = NULL
-  train$best_worst_dates = NULL
-}
-
-if(1==0){
-  train$last_date = NULL
-  train$first_date = NULL
-  train$first_last_date = NULL
-}
-
-if(1==0){
-  train$X20XXA_CycleCredit = NULL
-  train$X20XXB_CycleCredit = NULL
-}
-
-if(1==0){
-  #check
-  train$maize_fert = NULL
-  train$maize_general = NULL
-  
-}
-
-if(1==0){
-  train$grp_size=NULL
-  
-}
-
 
 #quick and dirty feature selection: variance threshhold
 
