@@ -41,37 +41,7 @@ find_name <- function(d, nom){
 
 
 RF_predictions <- function(dat17in, oldtraindat,RF_inpath, data_out_path){
-  if(0==1){ #dev mode
-    dat17in <- inpath2017
-    oldtraindat <- inpath2016
-    RF_inpath <- RF_inpath
-    #oldtraindat <- trainpath
-    
-    rm(dat17in)
-    rm(oldtraindat)
-    rm(RF_inpath)
-    rm(latest)
-    rm(train)
-    rm(grpdat)
-    rm(latest_data_in)
-    rm(newdis)
-    rm(pred)
-    rm(pred_prob)
-    rm(predictions_out)
 
-    
-    colnames(latest)
-    colnames(newdis)
-    
-    for(i in colnames(newdis)){
-      print(paste(i,mean(unlist(latest[i]), na.rm=TRUE)))
-      print(paste(i,mean(unlist(newdis[i]), na.rm=TRUE)))
-      print("###############")
-    }
-    #sanity
-    
-    
-    }
   
   #read data    
   oldtraindat <-  load(paste0(RF_inpath,"train.Rdata"))
