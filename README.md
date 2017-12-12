@@ -1,6 +1,6 @@
 # One Acre Fund predictive model 
 
-Prototype proof-of-concept model generating predicted probabilities that *groups* of farmers will default on the repayment deadline (note that real-time model is currently being built into OAF servers using SQL Server 2016). 
+Prototype proof-of-concept model generating predicted probabilities that *groups* of farmers will default on the repayment deadline. The SQL SP release version is [here](https://github.com/Michael-Bar/Credit_scoring_farmers). 
 
 ## Overview
 
